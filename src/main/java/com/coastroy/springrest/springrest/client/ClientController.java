@@ -33,6 +33,17 @@ public class ClientController {
     return response;
   }
 
+  @RequestMapping("/null")
+  public String nullTest() {
+    String response = null;
+    try {
+      response = restTemplate.postForObject(SERVER_URL + "beaches/1/null", null, String.class);
+    } catch (Exception e) {
+      e.printStackTrace();
+    }
+    return response;
+  }
+
   @RequestMapping("/beaches")
   public List<Beach> getBeaches() {
     return restTemplate.getForObject(SERVER_URL + "beaches", List.class);
