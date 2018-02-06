@@ -19,7 +19,11 @@ public class ClientConfig {
   public RestTemplate restTemplate() {
     RestTemplate restTemplate = new RestTemplate();
     HttpClient httpClient = HttpClients.createDefault();
-    restTemplate.setRequestFactory(new HttpComponentsClientHttpRequestFactory(httpClient));
+    HttpComponentsClientHttpRequestFactory requestFactory = new HttpComponentsClientHttpRequestFactory(httpClient);
+    //requestFactory.setConnectionRequestTimeout(5 * 1000);
+    //requestFactory.setConnectTimeout(2 * 1000);
+    requestFactory.setReadTimeout(2 * 1000);
+    restTemplate.setRequestFactory(requestFactory);
     restTemplate.setInterceptors(Collections.singletonList(actionTrackInterceptor));
     return restTemplate;
   }

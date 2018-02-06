@@ -22,6 +22,17 @@ public class ClientController {
   @Autowired
   RestTemplate restTemplate;
 
+  @RequestMapping("/timeout")
+  public String timeout() {
+    String response = null;
+    try {
+      response = restTemplate.getForObject(SERVER_URL + "test/timeout", String.class);
+    } catch (Exception e) {
+      e.printStackTrace();
+    }
+    return response;
+  }
+
   @RequestMapping("/beaches")
   public List<Beach> getBeaches() {
     return restTemplate.getForObject(SERVER_URL + "beaches", List.class);
