@@ -1,4 +1,4 @@
-package com.coastroy.springrest.springrest.server;
+package com.coastroy.springrest.springrest.server.service;
 
 import com.coastroy.springrest.springrest.models.Beach;
 import org.springframework.stereotype.Service;
